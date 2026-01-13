@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========================================= -->
+    <!-- Opciones del Snippet en el Editor         -->
+    <!-- ========================================= -->
+    
+    <template id="s_categories_slider_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            
+            <!-- Opciones GLOBALES del snippet -->
+            <div data-js="CategoriesSliderOptions"
+                 data-selector=".s_categories_slider"
+                 data-drop-in=".categories-slider"
+                 data-drop-near=".categories-slider">
+                
+                <!-- Título y subtítulo -->
+                <we-text string="Título" 
+                         data-selector=".oe_snippet_title" 
+                         data-attribute="textContent"/>
+                
+                <we-text string="Subtítulo" 
+                         data-selector=".oe_snippet_subtitle" 
+                         data-attribute="textContent"/>
+                
+                <we-separator/>
+                
+                <!-- Configuración del carrusel -->
+                <we-select string="Columnas visibles" name="columns">
+                    <we-button data-select-class="cols-3" data-active="false">3</we-button>
+                    <we-button data-select-class="cols-4" data-active="true">4</we-button>
+                    <we-button data-select-class="cols-5" data-active="false">5</we-button>
+                </we-select>
+                
+                <we-checkbox string="Autoplay" name="autoplay" data-toggle-class="auto-scroll"/>
+                
+                <we-input string="Velocidad (segundos)"
+                        name="speed"
+                        data-type="number"
+                        data-min="1"
+                        data-max="10"
+                        data-default-value="3"/>
+                
+                <we-separator/>
+                
+                <!-- AGRANDAR CARD - Funciona como "Agregar item" del accordion -->
+                <we-button string="➕ Agregar card"
+                        name="add_card"
+                        data-action="add-card">
+                    Agregar
+                </we-button>
+                
+            </div>
+            
+            <!-- Opciones INDIVIDUALES de cada card (aparecen cuando seleccionas un card) -->
+            <div data-js="CardOptions"
+                 data-selector="[data-card='true']"
+                 data-drop-in=".card"
+                 data-drop-near=".card">
+                
+                <we-text string="Texto del card" 
+                         data-selector=".card-title"
+                         data-attribute="textContent"/>
+                
+                <we-link string="Enlace" 
+                         data-selector=".card-link"
+                         data-attribute="href"/>
+                
+                <we-image string="Imagen de fondo" 
+                          data-selector=".card"
+                          data-css-property="background-image"
+                          data-url-transformation="url('{url}')"/>
+                
+                <we-image string="Icono" 
+                          data-selector=".card-icon"
+                          data-attribute="src"/>
+                
+                <we-separator/>
+                
+                <!-- ELIMINAR CARD -->
+                <we-button string="🗑️ Eliminar card"
+                        name="remove_card"
+                        data-action="remove-card">
+                    Eliminar
+                </we-button>
+                
+            </div>
+            
+        </xpath>
+    </template>
+
+</odoo>

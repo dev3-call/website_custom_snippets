@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========================================= -->
+    <!-- SNIPPET: Carrusel de Categorías          -->
+    <!-- ========================================= -->
+    
+    <template id="s_categories_slider" name="Carrusel de Categorías">
+        <section class="s_categories_slider"
+         data-snippet="s_categories_slider"
+         data-name="Categories Slider">
+            
+            <!-- Título y subtítulo -->
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="oe_snippet_title" data-content="title">Explora nuestras categorías</h2>
+                    <p class="oe_snippet_subtitle" data-content="subtitle">Encuentra el material perfecto para cada espacio</p>
+                </div>
+            </div>
+            
+            <!-- Contenedor del slider -->
+            <div class="categories-slider" data-slider-container="true">
+                <div class="slider-track" data-slider-track="true">
+                    <!-- Cards se generan dinámicamente -->
+                    <!-- Card de ejemplo 1 -->
+                    <div class="card-container" data-card="true" data-card-id="1">
+                        <a href="/shop" class="card-link" data-card-link="true">
+                            <div class="card" data-card-bg="true">
+                                <div class="card-overlay"></div>
+                                <div class="card-content">
+                                    <img src="/web/image/website/1/logo" 
+                                        alt="Icono" 
+                                        class="card-icon"
+                                        data-card-icon="true"/>
+                                    <h3 class="card-title" 
+                                        data-content="card_title"
+                                        contenteditable="true">Cerámicas</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Cards adicionales se agregarán aquí -->
+                </div>
+                
+                <!-- Dots de navegación -->
+                <div class="slider-dots" data-dots-container="true">
+                    <!-- Se generan dinámicamente -->
+                </div>
+            </div>
+            
+        </section>
+    </template>
+
+</odoo>

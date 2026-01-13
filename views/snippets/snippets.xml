@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        
+        <!-- Definición de la nueva categoría en el editor -->
+        <template id="custom_snippets" 
+                  name="Custom Snippets" 
+                  inherit_id="website.snippets">
+            
+            <xpath expr="//div[@id='snippet_structure']" position="after">
+                <div id="snippet_civilart" class="o_panel">
+                    <div class="o_panel_header">
+                        <i class="fa fa-gift mr-1"></i>
+                        Civilart Snippets
+                    </div>
+
+                    <div class="o_panel_body">
+
+                        <!-- Snippet personalizado de Menu -->
+                        <t t-snippet="website_custom_snippets.s_header_menu_panel"
+                           t-thumbnail="/website/static/src/img/snippets_thumbs/s_faq_collapse.svg"
+                           t-title="Custom Menu Civilart">
+                            <div class="s_website_snippet_card_body">
+                                <h5>Menu Civilart</h5>
+                                <p>Modal Overlay</p>
+                            </div>
+                        </t>
+
+                        <!-- Nuevo snippet de categorías -->
+                        <t t-snippet="website_custom_snippets.s_categories_slider"
+                           t-thumbnail="/website_custom_snippets/static/src/img/snippets_thumbs/categories_thumbnail.svg"
+                           t-title="Carrusel de Categorías">
+                            <div class="s_website_snippet_card_body">
+                                <h5>Categorías Slider</h5>
+                                <p>Deslizador de categorías</p>
+                            </div>
+                        </t>
+                        
+                    </div>
+                </div>
+            </xpath>
+            
+        </template>
+
+    </data>
+</odoo>

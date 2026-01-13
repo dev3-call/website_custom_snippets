@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========================================= -->
+    <!-- SNIPPET: Menú Header con Panel de Filtros -->
+    <!-- ========================================= -->
+    
+    <!-- Template Principal del Snippet -->
+    <template id="s_header_menu_panel" name="Header Menu con Panel de Filtros">
+        <section class="s_header_menu_panel">
+            <header class="header-menu-panel">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="/">
+                        <img src="/web/image/website/1/logo" alt="Logo" class="img-fluid"/>
+                    </a>
+                </div>
+
+                <!-- Navegación -->
+                <nav class="main-nav">
+                    <a href="#" class="nav-link" data-action="open-panel">Productos</a>
+                    <a href="/shop" class="nav-link">Tienda</a>
+                    <a href="/blog" class="nav-link">Blog</a>
+                    <a href="/contactus" class="nav-link">Contacto</a>
+                </nav>
+
+                <!-- Iconos de Header -->
+                <div class="header-icons">
+                    <button class="icon-btn" id="btnSearchHeader" aria-label="Buscar">
+                        <i class="fa fa-search"/>
+                    </button>
+                    <button class="icon-btn" id="btnAccountHeader" aria-label="Mi cuenta">
+                        <i class="fa fa-user"/>
+                    </button>
+                    <button class="icon-btn" id="menuBtnHeader" aria-label="Menú">
+                        <i class="fa fa-bars"/>
+                    </button>
+                </div>
+
+                <!-- Barra de Búsqueda Desplegable -->
+                <div class="search-bar" id="searchBarHeader">
+                    <form action="/shop" method="get">
+                        <input type="text" name="search" placeholder="Buscar productos, colecciones o códigos..." class="form-control"/>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"/>
+                        </button>
+                    </form>
+                </div>
+            </header>
+
+            <!-- Panel Deslizante de Productos/Filtros -->
+            <div id="productosPanel" class="productos-panel" aria-hidden="true">
+                <div class="panel-dialog" role="dialog" aria-modal="true" aria-labelledby="filtrosTitle">
+                    <button class="close-btn" id="cerrarPanel" aria-label="Cerrar filtros">×</button>
+
+                    <div class="panel-grid">
+                        <!-- Columna 1: Tipo y Aplicación -->
+                        <section class="col with-divider">
+                            <h4 id="filtrosTitle">Tipo</h4>
+                            <div class="chips">
+                                <label class="chip">
+                                    <input type="checkbox" name="tipo" value="ceramicas"/>
+                                    <span>Cerámicas</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="checkbox" name="tipo" value="porcelanatos"/>
+                                    <span>Porcelanatos</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="checkbox" name="tipo" value="porcelanatos_xxl"/>
+                                    <span>Porcelanatos XXL</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="checkbox" name="tipo" value="mosaicos"/>
+                                    <span>Mosaicos</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="checkbox" name="tipo" value="piedra_natural"/>
+                                    <span>Piedra Natural</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="checkbox" name="tipo" value="granito"/>
+                                    <span>Granito</span>
+                                </label>
+                            </div>
+                            
+                            <br/>
+                            
+                            <h4>Aplicación</h4>
+                            <div class="chips">
+                                <label class="chip">
+                                    <input type="checkbox" name="aplicacion" value="piso"/>
+                                    <span>Piso</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="checkbox" name="aplicacion" value="paredes"/>
+                                    <span>Paredes</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Columna 2: Acabado y Material -->
+                        <section class="col with-divider">
+                            <h4>Acabado</h4>
+                            <div class="checks">
+                                <label class="chk">
+                                    <input type="checkbox" name="acabado" value="brillo"/>
+                                    <span class="box"></span>
+                                    <span>Brillo</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" name="acabado" value="mate"/>
+                                    <span class="box"></span>
+                                    <span>Mate</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" name="acabado" value="externo"/>
+                                    <span class="box"></span>
+                                    <span>Externo</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" name="acabado" value="pulido"/>
+                                    <span class="box"></span>
+                                    <span>Pulido</span>
+                                </label>
+                            </div>
+
+                            <br/>
+
+                            <h4>Material</h4>
+                            <div class="chips material">
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="madera"/>
+                                    <span>Madera</span>
+                                </label>
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="marmol"/>
+                                    <span>Mármol</span>
+                                </label>
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="concreto"/>
+                                    <span>Concreto</span>
+                                </label>
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="piedra"/>
+                                    <span>Piedra</span>
+                                </label>
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="area_externa"/>
+                                    <span>Área Externa</span>
+                                </label>
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="decoracion"/>
+                                    <span>Decoración</span>
+                                </label>
+                                <label class="chip-alt">
+                                    <input type="checkbox" name="material" value="sintetico"/>
+                                    <span>Sintético</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Columna 3: Formato -->
+                        <section class="col with-divider">
+                            <h4>Formato</h4>
+                            <div class="format-list">
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="15x90"/>
+                                    <span class="rect r-15x90"></span>
+                                    <small>15x90</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="60x60"/>
+                                    <span class="rect r-60x60"></span>
+                                    <small>60x60</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="45x90"/>
+                                    <span class="rect r-45x90"></span>
+                                    <small>45x90</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="80x80"/>
+                                    <span class="rect r-80x80"></span>
+                                    <small>80x80</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="30x60"/>
+                                    <span class="rect r-30x60"></span>
+                                    <small>30x60</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="59x59"/>
+                                    <span class="rect r-59x59"></span>
+                                    <small>59x59</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="20x120"/>
+                                    <span class="rect r-20x120"></span>
+                                    <small>20x120</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="60x120"/>
+                                    <span class="rect r-60x120"></span>
+                                    <small>60x120</small>
+                                </label>
+                                <label class="format">
+                                    <input type="checkbox" name="format" value="145"/>
+                                    <span class="rect r-145"></span>
+                                    <small>14.5x14.5</small>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Columna 4: Ambientes -->
+                        <section class="col">
+                            <h4 class="mt">Ambientes</h4>
+                            <div class="ambientes">
+                                <label class="amb">
+                                    <input type="checkbox" name="ambientes" value="sala"/>
+                                    <i class="fa fa-home fa-3x"></i>
+                                    <span>Sala</span>
+                                </label>
+                                <label class="amb">
+                                    <input type="checkbox" name="ambientes" value="cocina"/>
+                                    <i class="fa fa-kitchen fa-3x"></i>
+                                    <span>Cocina</span>
+                                </label>
+                                <label class="amb">
+                                    <input type="checkbox" name="ambientes" value="bano"/>
+                                    <i class="fa fa-bath fa-3x"></i>
+                                    <span>Baño</span>
+                                </label>
+                                <label class="amb">
+                                    <input type="checkbox" name="ambientes" value="area_externa"/>
+                                    <i class="fa fa-tree fa-3x"></i>
+                                    <span>Área Externa</span>
+                                </label>
+                                <label class="amb">
+                                    <input type="checkbox" name="ambientes" value="dormitorio"/>
+                                    <i class="fa fa-bed fa-3x"></i>
+                                    <span>Dormitorio</span>
+                                </label>
+                            </div>
+
+                            <!-- Footer de Acciones -->
+                            <div class="panel-footer">
+                                <button class="btn btn-primary" id="btnBuscarPanel">Buscar</button>
+                                <a href="/shop" class="btn btn-outline-light">Ver todos los productos</a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menú Overlay Lateral -->
+            <div class="overlay" id="overlayMenu">
+                <!-- Logo -->
+                <div class="overlay-logo">
+                    <img src="/web/image/website/1/logo" alt="Logo" class="img-fluid"/>
+                </div>
+
+                <button class="close-overlay" id="closeOverlay">×</button>
+
+                <!-- Menú en Columna -->
+                <div class="overlay-menu">
+                    <a href="#" data-action="open-panel">Productos</a>
+                    <a href="/page/about-us">Empresa</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/page/catalogos">Catálogos</a>
+                    <a href="/contactus">Contáctenos</a>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-tiktok"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

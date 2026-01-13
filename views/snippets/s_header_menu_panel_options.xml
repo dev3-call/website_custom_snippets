@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========================================= -->
+    <!-- Opciones del Snippet en el Editor -->
+    <!-- ========================================= -->
+    
+    <template id="s_header_menu_panel_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            
+            
+            
+        </xpath>
+    </template>
+    
+    <!-- ========================================= -->
+    <!-- Registro en el Menú de Snippets -->
+    <!-- ========================================= -->
+    
+    <template id="s_header_menu_panel_snippet_register" inherit_id="website.snippets">
+        <xpath expr="//div[@id='snippet_structure']" position="inside">
+            <div data-oe-call="s_header_menu_panel">
+                <div class="oe_snippet_thumbnail">
+                    <i class="fa fa-bars fa-2x"/>
+                    <span class="oe_snippet_thumbnail_title">Header con Panel</span>
+                </div>
+                <section class="s_header_menu_panel"/>
+            </div>
+        </xpath>
+    </template>
+    
+</odoo>
