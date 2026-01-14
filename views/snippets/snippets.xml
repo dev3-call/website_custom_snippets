@@ -35,6 +35,16 @@
                                 <p>Deslizador de categorías</p>
                             </div>
                         </t>
+
+                        <!-- Nuevo snippet de imagenes -->
+                        <t t-snippet="website_custom_snippets.s_two_images_hover"
+                           t-thumbnail="/website_custom_snippets/static/src/img/snippets_thumbs/two_images_thumbnail.svg"
+                           t-title="Imágenes">
+                            <div class="s_website_snippet_card_body">
+                                <h5>Imágenes</h5>
+                                <p>Banner de imagenes</p>
+                            </div>
+                        </t>
                         
                     </div>
                 </div>

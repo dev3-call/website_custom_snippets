@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="s_two_images_hover" name="Two Images Hover">
+        <section class="s_two_images_hover two-images o_cc o_cc1">
+            <div class="container">
+
+                <!-- ✅ Horizontal + editable -->
+                <div class="two-images-row oe_structure">
+
+                    <a class="two-img-item" href="#">
+                        <img class="two-img-bg img-fluid o_editable_media o_we_custom_image"
+                             src="/web/static/img/placeholder.png"
+                             alt="Imagen"/>
+
+                        <!-- ✅ HITBOX para editar LINK -->
+                        <span class="two-img-link-hitbox" title="Editar link"></span>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+    </template>
+
+</odoo>

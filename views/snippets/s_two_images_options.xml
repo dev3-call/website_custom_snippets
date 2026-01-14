@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="s_two_images_options" inherit_id="website.snippet_options">
+    <xpath expr="." position="inside">
+
+      <div data-js="TwoImagesMultipleItems"
+           data-selector=".s_two_images_hover">
+
+        <we-row string="Imágenes">
+
+          <we-button data-add-item=""
+                     data-item=".two-images-row > .two-img-item:last"
+                     data-select-item=""
+                     data-no-preview="true"
+                     class="o_we_bg_brand_primary">
+            + Agregar imagen
+          </we-button>
+
+          <we-button data-remove-item=""
+                     data-item=".two-images-row > .two-img-item:last"
+                     data-no-preview="true"
+                     class="o_we_bg_brand_secondary">
+            Eliminar última
+          </we-button>
+
+        </we-row>
+
+      </div>
+
+      <!-- ✅ Opciones extras del snippet -->
+      <div data-js="TwoImagesOptions"
+           data-selector=".s_two_images_hover">
+
+        <we-checkbox string="Abrir enlaces en nueva pestaña"
+                     name="toggle_new_tab"
+                     data-no-preview="true"/>
+      </div>
+
+    </xpath>
+  </template>
+
+</odoo>
