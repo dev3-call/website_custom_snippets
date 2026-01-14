@@ -1,53 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- ========================================= -->
-    <!-- SNIPPET: Carrusel de Categorías          -->
-    <!-- ========================================= -->
-    
-    <template id="s_categories_slider" name="Carrusel de Categorías">
-        <section class="s_categories_slider"
-         data-snippet="s_categories_slider"
-         data-name="Categories Slider">
-            
-            <!-- Título y subtítulo -->
+
+    <template id="s_categories_slider" name="Categories Slider">
+        <section class="s_categories_slider categories-slider o_cc o_cc1">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="oe_snippet_title" data-content="title">Explora nuestras categorías</h2>
-                    <p class="oe_snippet_subtitle" data-content="subtitle">Encuentra el material perfecto para cada espacio</p>
+                <!-- ✅ oe_structure para permitir contenido editable -->
+                <div class="slider-container oe_structure" aria-label="Categories slider">
+
+                    <!-- Card base (se puede duplicar o crear desde opción) -->
+                    <a class="card" href="#">
+                        <!-- ✅ Background editable -->
+                        <img class="card-bg o_editable_media"
+                            src="/web/static/img/placeholder.png"
+                            alt="Background"/>
+
+                        <div class="card-overlay"></div>
+
+                        <div class="content">
+                            <img src="/website_custom_snippets/static/src/img/icons/ceramica.svg"
+                                alt="Icon"
+                                class="icon o_editable_media"/>
+
+                            <!-- ✅ Nombre editable -->
+                            <h3 class="o_default_snippet_text">Nueva Categoría</h3>
+                        </div>
+                    </a>
+
                 </div>
+
+                <div class="dots" aria-label="Slider pagination"></div>
             </div>
-            
-            <!-- Contenedor del slider -->
-            <div class="categories-slider" data-slider-container="true">
-                <div class="slider-track" data-slider-track="true">
-                    <!-- Cards se generan dinámicamente -->
-                    <!-- Card de ejemplo 1 -->
-                    <div class="card-container" data-card="true" data-card-id="1">
-                        <a href="/shop" class="card-link" data-card-link="true">
-                            <div class="card" data-card-bg="true">
-                                <div class="card-overlay"></div>
-                                <div class="card-content">
-                                    <img src="/web/image/website/1/logo" 
-                                        alt="Icono" 
-                                        class="card-icon"
-                                        data-card-icon="true"/>
-                                    <h3 class="card-title" 
-                                        data-content="card_title"
-                                        contenteditable="true">Cerámicas</h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <!-- Cards adicionales se agregarán aquí -->
-                </div>
-                
-                <!-- Dots de navegación -->
-                <div class="slider-dots" data-dots-container="true">
-                    <!-- Se generan dinámicamente -->
-                </div>
-            </div>
-            
         </section>
     </template>
 

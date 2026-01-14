@@ -1,380 +1,166 @@
-// ========================================
-// SCSS: s_categories_slider
-// Carrusel de Categorías
-// ========================================
+/* =========================================
+   Snippet: Categories Slider (Odoo 16)
+   Basado en tu styles.css
+========================================= */
 
-// Variables
-$primary-color: #b5192d !default;
-$text-light: #fff !default;
-$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !default;
-$transition-speed: 0.3s !default;
-
-// ========================================
-// SLIDER DE CATEGORÍAS
-// ========================================
 .s_categories_slider {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0 60px;
+
+  .slider-container {
+    display: flex;
+    gap: 1.2rem;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .card {
+    height: 240px;
+    width: 240px;
+    flex: 0 0 280px;
+    aspect-ratio: 1 / 1.2;
+    background-size: 120%;
+    background-position: center;
+    overflow: hidden;
     position: relative;
-    padding: 40px 0 60px;
+    cursor: pointer;
+    transition: background-size 0.3s ease;
+    text-decoration: none;
 
-    .categories-slider {
-        .slider-track {
-            display: flex !important;
-            flex-direction: row !important;
-            overflow-x: auto !important;
-            gap: 1.2rem !important;
-            scroll-behavior: smooth !important;
-            padding: 10px 0 !important;
-            
-            &::-webkit-scrollbar {
-                display: none !important;
-            }
-        }
-        
-        // Cards iniciales ya tienen dimensiones correctas
-        .card-container {
-            &:first-child .card {
-                background-image: url('/web/image/website/1/logo') !important;
-            }
-            
-            &:nth-child(2) .card {
-                background-image: url('/web/image/website/1/logo') !important;
-            }
-        }
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;   // ✅ comportamiento de background
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+      z-index: 0;
     }
-    
-    .section-header {
-        text-align: center;
-        margin-bottom: 40px;
-        
-        h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #222;
-        }
-        
-        p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-    }
-    
-    .categories-slider {
-        position: relative;
-        overflow: hidden;
-        
-        // Contenedor del slider
-        .slider-container {
-            display: flex;
-            gap: 1.2rem;
-            scroll-behavior: smooth;
-            overflow-x: auto;
-            scrollbar-width: none;
-            padding: 10px 0;
-            
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            
-            // Tarjetas
-            .card {
-                height: 240px;
-                min-width: 280px; // Ancho base
-                flex: 0 0 280px;
-                aspect-ratio: 1 / 1.2;
-                background-size: 120%;
-                background-position: center;
-                background-repeat: no-repeat;
-                overflow: hidden;
-                position: relative;
-                cursor: pointer;
-                border-radius: 12px;
-                transition: all $transition-speed ease;
-                
-                .card-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: rgba(0, 0, 0, 0);
-                    transition: background 0.35s ease;
-                    z-index: 1;
-                }
-                
-                .content {
-                    position: absolute;
-                    inset: 0;
-                    z-index: 2;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    color: $text-light;
-                    text-align: center;
-                    padding: 20px;
-                    
-                    .icon {
-                        width: 50px;
-                        margin-bottom: 10px;
-                        filter: brightness(0) invert(1);
-                        transition: transform $transition-speed;
-                    }
-                    
-                    h3 {
-                        font-size: 1.1rem;
-                        line-height: 1.3;
-                        font-weight: 600;
-                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-                        margin: 0;
-                    }
-                }
-                
-                // Hover
-                &:hover {
-                    background-size: 100%;
-                    transform: translateY(-5px);
-                    
-                    .card-overlay {
-                        background: rgba(0, 0, 0, 0.5);
-                    }
-                    
-                    .icon {
-                        transform: scale(1.1);
-                    }
-                }
-            }
-            
-            // Estilos alternativos
-            &.cards-rounded .card {
-                border-radius: 20px;
-            }
-            
-            &.cards-square .card {
-                border-radius: 0;
-            }
-            
-            &.cards-shadow .card {
-                box-shadow: $card-shadow;
-                
-                &:hover {
-                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-                }
-            }
-        }
-        
-        // Dots
-        .dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-            
-            button {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                border: none;
-                background: #bbb;
-                cursor: pointer;
-                transition: background $transition-speed;
-                padding: 0;
-                
-                &.active {
-                    background: $primary-color;
-                }
-                
-                &:hover:not(.active) {
-                    background: #888;
-                }
-            }
-        }
-    }
-    
-    // Columnas específicas
-    &.cols-2 .card {
-        min-width: calc(50% - 0.6rem) !important;
-    }
-    
-    &.cols-3 .card {
-        min-width: calc(33.333% - 0.8rem) !important;
-    }
-    
-    &.cols-4 .card {
-        min-width: calc(25% - 0.9rem) !important;
-    }
-    
-    &.cols-5 .card {
-        min-width: calc(20% - 1rem) !important;
-    }
-}
 
-// ========================================
-// RESPONSIVE
-// ========================================
-@media (max-width: 1200px) {
-    .s_categories_slider {
-        .categories-slider .slider-container .card {
-            min-width: 240px;
-            flex: 0 0 240px;
-        }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.35s ease;
+      z-index: 1;
     }
-}
 
-@media (max-width: 900px) {
-    .s_categories_slider {
-        padding: 30px 0 50px;
-        
-        .section-header {
-            h2 {
-                font-size: 2rem;
-            }
-            
-            p {
-                font-size: 1rem;
-            }
-        }
-        
-        .categories-slider {
-            .slider-container {
-                gap: 1rem;
-                
-                .card {
-                    min-width: 200px;
-                    flex: 0 0 200px;
-                    
-                    .content h3 {
-                        font-size: 1rem;
-                    }
-                }
-            }
-        }
+    .content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
     }
-}
 
-@media (max-width: 600px) {
-    .s_categories_slider {
-        padding: 20px 0 40px;
-        
-        .section-header {
-            margin-bottom: 30px;
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        .categories-slider {
-            .slider-container .card {
-                min-width: 80%;
-                flex: 0 0 80%;
-                aspect-ratio: 1 / 1.1;
-                
-                .content .icon {
-                    width: 40px;
-                }
-                
-                .content h3 {
-                    font-size: 1rem;
-                }
-            }
-        }
+    .icon {
+      width: 50px;
+      margin-bottom: 10px;
+      filter: brightness(0) invert(1);
     }
-}
 
-@media (max-width: 400px) {
-    .s_categories_slider {
-        .categories-slider .slider-container .card {
-            min-width: 90%;
-            flex: 0 0 90%;
-        }
+    h3 {
+      font-size: 1.1rem;
+      line-height: 1.3;
+      font-weight: 600;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin: 0;
     }
-}
 
-// ========================================
-// DIMENSIONES PREDETERMINADAS DEL CARD
-// ========================================
+    &:hover {
+      .card-bg {
+        transform: scale(1.0);
+      }
 
-.card-container {
-    // Contenedor del card
-    flex-shrink: 0;
-    
+      .card-overlay {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+
+    button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: #bbb;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &.active {
+        background: #000;
+      }
+    }
+  }
+
+  /* --- Responsividad --- */
+  @media (max-width: 1200px) {
     .card {
-        // DIMENSIONES EXACTAS ORIGINALES
-        height: 240px !important;
-        min-width: 240px !important;
-        flex: 0 0 280px !important;
-        aspect-ratio: 1 / 1.2 !important;
-        
-        // Estilos base
-        background-size: 120% !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        overflow: hidden !important;
-        position: relative !important;
-        cursor: pointer !important;
-        border-radius: 12px !important;
-        transition: all 0.3s ease !important;
-        
-        .card-overlay {
-            position: absolute !important;
-            inset: 0 !important;
-            background: rgba(0, 0, 0, 0) !important;
-            transition: background 0.35s ease !important;
-            z-index: 1 !important;
-        }
-        
-        .card-content {
-            position: absolute !important;
-            inset: 0 !important;
-            z-index: 2 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            color: #fff !important;
-            text-align: center !important;
-            padding: 20px !important;
-            
-            .card-icon {
-                width: 50px !important;
-                margin-bottom: 10px !important;
-                filter: brightness(0) invert(1) !important;
-                transition: transform 0.3s ease !important;
-                height: auto !important;
-            }
-            
-            .card-title {
-                font-size: 1.1rem !important;
-                line-height: 1.3 !important;
-                font-weight: 600 !important;
-                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
-                margin: 0 !important;
-                cursor: text !important;
-            }
-        }
-        
-        // Hover effects
-        &:hover {
-            background-size: 100% !important;
-            transform: translateY(-5px) !important;
-            
-            .card-overlay {
-                background: rgba(0, 0, 0, 0.5) !important;
-            }
-            
-            .card-icon {
-                transform: scale(1.1) !important;
-            }
-        }
+      flex: 0 0 240px;
     }
-    
-    .card-link {
-        display: block !important;
-        text-decoration: none !important;
-        color: inherit !important;
-        
-        &:hover {
-            text-decoration: none !important;
-        }
+  }
+
+  @media (max-width: 900px) {
+    .slider-container {
+      gap: 1rem;
     }
+    .card {
+      flex: 0 0 200px;
+    }
+    .card h3 {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 20px 0 40px;
+
+    .card {
+      flex: 0 0 80%;
+      aspect-ratio: 1 / 1.1;
+    }
+
+    .card .icon {
+      width: 40px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .card {
+      flex: 0 0 90%;
+    }
+  }
+}
+
+.s_categories_slider {
+  .card-overlay,
+  .content {
+    pointer-events: none; // ✅ deja pasar el click al fondo
+  }
+
+  .content .icon,
+  .content h3 {
+    pointer-events: auto; // ✅ PERMITE editar icono y texto
+  }
 }
