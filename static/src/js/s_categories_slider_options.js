@@ -2,81 +2,46 @@
 
 import options from "web_editor.snippets.options";
 
-/**
- * ==========================================================
- * 1) MultipleItems: Agregar / eliminar imágenes (max 4)
- * ==========================================================
- */
-options.registry.TwoImagesMultipleItems = options.registry.MultipleItems.extend({
-    MAX_ITEMS: 4,
+console.log("✅ CategoriesSliderOptions LOADED");
 
-    _computeWidgetVisibility: async function (widgetName, params) {
-        const $items = this.$target.find(".two-images-row > .two-img-item");
-        const count = $items.length;
-
-        if (widgetName === "add_item_opt") {
-            return count < this.MAX_ITEMS;
-        }
-        if (widgetName === "remove_item_opt") {
-            return count > 1;
-        }
-
-        return this._super(...arguments);
+options.registry.CategoriesSliderOptions = options.Class.extend({
+    start: function () {
+        console.log("✅ CategoriesSliderOptions START", this.$target);
+        return this._super.apply(this, arguments);
     },
 
-    _addItemCallback: function ($target) {
-        // ✅ href real para que el builder deje editar link
-        $target.attr("href", "#");
+    add_card: function () {
+        console.log("✅ add_card() clicked");
 
-        // ✅ Si el snippet tiene "abrir en nueva pestaña" activo, lo heredamos
-        const openInNewTab = this.$target.attr("data-open-in-new-tab") === "true";
-        if (openInNewTab) {
-            $target.attr("target", "_blank");
-            $target.attr("rel", "noopener noreferrer");
-        } else {
-            $target.removeAttr("target");
-            $target.removeAttr("rel");
-        }
-    },
-});
+        const slider = this.$target.find(".slider-container").first();
+        console.log("✅ slider found:", slider.length);
 
+        if (!slider.length) return;
 
-/**
- * ==========================================================
- * 2) Options: Checkbox "Abrir en nueva pestaña"
- * ==========================================================
- */
-options.registry.TwoImagesOptions = options.Class.extend({
+        const newCard = `
+            <a class="card" href="#"
+               style="background-image: url('/web/static/img/placeholder.png');">
+                <div class="card-overlay"></div>
+                <div class="content">
+                    <h3 class="o_default_snippet_text">Nueva Categoría</h3>
+                </div>
+            </a>
+        `;
 
-    /**
-     * Checkbox handler:
-     * - Activa o desactiva target="_blank" para todos los <a>
-     */
-    toggle_new_tab: function (previewMode, widgetValue, params) {
-        const $links = this.$target.find(".two-images-row > .two-img-item");
-
-        // ✅ Cuando el checkbox está activo Odoo envía widgetValue = true
-        const enabled = !!widgetValue;
-
-        // Guardamos estado en el snippet (para heredar al agregar nuevos)
-        this.$target.attr("data-open-in-new-tab", enabled ? "true" : "false");
-
-        if (enabled) {
-            $links.attr("target", "_blank");
-            $links.attr("rel", "noopener noreferrer");
-        } else {
-            $links.removeAttr("target");
-            $links.removeAttr("rel");
-        }
+        slider.append(newCard);
+        console.log("✅ Card appended, total:", slider.find(".card").length);
     },
 
-    /**
-     * Para que el checkbox recuerde el estado actual al volver a seleccionar el snippet
-     */
-    _computeWidgetState: function (methodName, params) {
-        if (methodName === "toggle_new_tab") {
-            return this.$target.attr("data-open-in-new-tab") === "true";
-        }
-        return this._super(...arguments);
+    remove_last_card: function () {
+        console.log("✅ remove_last_card() clicked");
+
+        const slider = this.$target.find(".slider-container").first();
+        if (!slider.length) return;
+
+        const cards = slider.find(".card");
+        if (cards.length <= 1) return;
+
+        cards.last().remove();
+        console.log("✅ Card removed, total:", slider.find(".card").length);
     },
 });

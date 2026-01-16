@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="s_products_slider" name="Products Slider">
+        <section class="s_products_slider product-section product-image product-left"
+                 data-snippet="s_products_slider"
+                 data-category-id=""
+                 data-limit="12"
+                 data-position="left">
+
+            <div class="section-container">
+                <div class="section-header mb-3">
+                    <h2 class="o_default_snippet_text">Nuevos Productos</h2>
+                    <p class="o_default_snippet_text">Descubre lo último en diseño, recién llegado para inspirarte.</p>
+                </div>
+
+                <!-- ✅ Loader / warning -->
+                <div class="alert alert-info js_products_slider_empty">
+                    Selecciona una categoría desde el Builder para mostrar productos.
+                </div>
+
+                <!-- ✅ Contenedor con controles -->
+                <div class="slider-container">
+                    <!-- Flechas de navegación -->
+                    <div class="controls">
+                        <button class="p-arrow prev-arrow">❮</button>
+                        <button class="p-arrow next-arrow">❯</button>
+                    </div>
+                    
+                    <!-- ✅ Aquí se renderizan cards -->
+                    <div class="product-slider js_products_slider_wrap"></div>
+                </div>
+
+                <!-- Botón Ver toda la colección -->
+                <div class="show-all">
+                    <button class="btn-show-all">Ver toda la colección</button>
+                </div>
+            </div>
+
+        </section>
+    </template>
+
+</odoo>

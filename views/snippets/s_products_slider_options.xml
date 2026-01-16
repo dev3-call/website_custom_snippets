@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="s_products_slider_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+
+            <div data-js="ProductsSliderOptions"
+                 data-selector=".s_products_slider">
+
+                <!-- ✅ Nueva opción: Posición -->
+                <we-row string="Posición">
+                    <we-select string="Posición del Slider" data-attribute-name="position" data-no-preview="true">
+                        <we-button data-select-data-attribute="left">Izquierda (Imagen derecha)</we-button>
+                        <we-button data-select-data-attribute="right">Derecha (Imagen izquierda)</we-button>
+                    </we-select>
+                </we-row>
+
+                <we-row string="Catálogo">
+                    <!-- ✅ esto se llena con _renderCustomXML -->
+                    <we-select string="Categoría"
+                               data-name="category_opt"
+                               data-attribute-name="categoryId"
+                               data-no-preview="true"/>
+                </we-row>
+
+                <we-row string="Cantidad">
+                    <we-select string="Límite" data-attribute-name="limit" data-no-preview="true">
+                        <we-button data-select-data-attribute="6">6</we-button>
+                        <we-button data-select-data-attribute="8">8</we-button>
+                        <we-button data-select-data-attribute="12">12</we-button>
+                        <we-button data-select-data-attribute="16">16</we-button>
+                    </we-select>
+                </we-row>
+
+            </div>
+
+        </xpath>
+    </template>
+
+</odoo>

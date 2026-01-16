@@ -1,0 +1,395 @@
+/* Estilos específicos para el snippet s_products_slider */
+.s_products_slider {
+    position: relative;
+    padding-top: 60px;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 30px;
+    height: 630px;
+}
+
+.s_products_slider.product-image {
+    background: no-repeat;
+    background-size: auto;
+    background-position: left center;
+}
+
+.s_products_slider .section-container {
+    width: 70%;
+    float: right;
+    position: relative;
+    margin-top: 30px;
+}
+
+.s_products_slider .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-left: 50px;
+}
+
+.s_products_slider .section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.s_products_slider .section-header p {
+    color: #555;
+    font-size: 1rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Slider container */
+.s_products_slider .slider-container {
+    position: relative;
+}
+
+/* Slider */
+.s_products_slider .product-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.s_products_slider .product-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cards */
+.s_products_slider .product-card {
+    flex: 0 0 calc(25% - 1.2rem);
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.s_products_slider .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Image flip effect */
+.s_products_slider .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    aspect-ratio: 1 / 1;
+    perspective: 800px;
+    margin-bottom: 1rem;
+}
+
+.s_products_slider .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+}
+
+.s_products_slider .image-wrapper .back {
+    transform: rotateY(180deg);
+}
+
+.s_products_slider .image-wrapper:hover .front {
+    transform: rotateY(180deg);
+}
+
+.s_products_slider .image-wrapper:hover .back {
+    transform: rotateY(0deg);
+}
+
+/* Text and buttons */
+.s_products_slider .product-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px 0 5px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.s_products_slider .product-card .price {
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.s_products_slider .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.s_products_slider .btn-primary {
+    background: #b51a2e;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: center;
+}
+
+.s_products_slider .btn-primary:hover {
+    background: #ee3b53;
+    color: #fff;
+    text-decoration: none;
+}
+
+.s_products_slider .btn-outline {
+    border: 1px solid #b51a2e;
+    background: transparent;
+    color: #b51a2e;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+}
+
+.s_products_slider .btn-outline:hover {
+    background: #ee3b53;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Offer blocks */
+.s_products_slider .offer-block {
+    position: absolute;
+    top: 0;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    column-gap: 10px;
+    z-index: 2;
+}
+
+.s_products_slider .offer-item {
+    display: flex;
+    padding: 5px;
+    border-radius: 0px 0px 8px 8px;
+    column-gap: 5px;
+    align-items: center;
+}
+
+.s_products_slider .offer-item.hot-sale {
+    background-color: #f6b632;
+}
+
+.s_products_slider .offer-item.off-sale {
+    background-color: #b51a2e;
+}
+
+.s_products_slider .offer-item img {
+    height: 18px;
+    width: auto;
+}
+
+.s_products_slider .offer-item .off-title {
+    font-size: 0.875rem;
+    color: white;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Navigation arrows */
+.s_products_slider .controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.s_products_slider .controls .p-arrow {
+    pointer-events: all;
+    border: none;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.s_products_slider .controls .p-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Show all button */
+.s_products_slider .show-all {
+    text-align: center;
+    margin-top: 35px;
+    clear: both;
+}
+
+.s_products_slider .btn-show-all {
+    background: #b51a2e;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+}
+
+.s_products_slider .btn-show-all:hover {
+    background: #ee3b53;
+}
+
+/* Posición izquierda (default) */
+.s_products_slider.product-left .section-container {
+    width: 70%;
+    float: right;
+    position: relative;
+    margin-top: 30px;
+}
+
+.s_products_slider.product-left.product-image {
+    background: no-repeat;
+    background-size: auto;
+    background-position: left center;
+}
+
+/* Posición derecha */
+.s_products_slider.product-right .section-container {
+    width: 70%;
+    float: left;
+    position: relative;
+    margin-top: 30px;
+}
+
+.s_products_slider.product-right.product-image {
+    background: no-repeat;
+    background-size: auto;
+    background-position: right center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .s_products_slider .product-card {
+        flex: 0 0 calc(50% - 1rem);
+    }
+    
+    .s_products_slider .section-container {
+        width: 100%;
+        float: none;
+        padding: 0 20px;
+    }
+    
+    .s_products_slider.product-image {
+        background-size: 40% auto;
+    }
+
+    .s_products_slider.product-right .section-container {
+        width: 100%;
+        float: none;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .s_products_slider {
+        min-height: auto;
+        padding-top: 40px;
+    }
+    
+    .s_products_slider .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .s_products_slider .section-header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .s_products_slider .product-card {
+        flex: 0 0 80%;
+    }
+    
+    .s_products_slider .controls {
+        display: none;
+    }
+    
+    .s_products_slider.product-image {
+        background-size: 50% auto;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .s_products_slider {
+        padding: 40px 6%;
+    }
+    
+    .s_products_slider .product-card {
+        flex: 0 0 85%;
+    }
+    
+    .s_products_slider.product-image {
+        background: none;
+    }
+}
+
+/* ✅ Badges genéricos basados en tags */
+.s_products_slider .offer-item.generic-tag {
+    background-color: #b51a2e; /* Color por defecto */
+    padding: 5px 10px;
+}
+
+.s_products_slider .offer-item.generic-tag .off-title {
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 600;
+}
+
+/* ✅ Asegurar que los badges se vean bien */
+.s_products_slider .offer-block {
+    position: absolute;
+    top: 0;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    column-gap: 10px;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+.s_products_slider .offer-item {
+    display: flex;
+    padding: 5px 8px;
+    border-radius: 0px 0px 8px 8px;
+    column-gap: 5px;
+    align-items: center;
+    min-width: 60px;
+    justify-content: center;
+}
